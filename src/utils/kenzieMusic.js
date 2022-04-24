@@ -1,24 +1,31 @@
 const kenzieMusic = class {
-  static musicaAtual = {};
-  static async buscaMusica(nomeMusica) {
-    if (nomeMusica.trim() === "") {
-      alert("Digite o nome de alguma música.")
-      return console.log("Busca inválida!")
+  static searchResults = {};
+  static async search(musicName) {
+    if (musicName.trim() === "") {
+      alert("Digite o nome de alguma música.");
+      return console.log("Busca inválida!");
     }
-    await fetch(`https://simple-spotify-api.herokuapp.com?search=${nomeMusica}`)
+    await fetch(`https://simple-spotify-api.herokuapp.com?search=${musicName}`)
       .then((res) => res.json())
       .then((res) => {
-        const musica = res.data[0];
-        if (!musica) {
+        console.log(res.data);
+        const music = res.data[0];
+        if (!music) {
           alert("Música não encontrada!");
-          this.musicaAtual = {};
-          return console.log("Música não encontrada!")
+          this.searchResults = {};
+          return console.log("Música não encontrada!");
         } else {
-          this.musicaAtual = musica;
+          this.searchResults = music;
+        }
+        const results = res.data;
+        if (!results) {
+          alert("Nenhum resultado encontrado");
+          this.searchResults = {};
+        } else {
+          this.searchResults = results;
         }
       });
   }
 };
 
 export default kenzieMusic;
-  

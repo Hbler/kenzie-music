@@ -1,4 +1,4 @@
-💪 Atividade: Kenzie Music
+**💪** Atividade: Kenzie Music
 =========================
 
 Introdução

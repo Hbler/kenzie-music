@@ -1,18 +1,125 @@
+/* TYPOGRAPHY */
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@800&family=Roboto:wght@300;500;700&display=swap");
 
+/*
+font-family: 'JetBrains Mono', monospace;
+font-family: 'Roboto', sans-serif;
+*/
+
+/* BODY */
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+/* HEADER */
+
+header {
+  height: 20vh;
+  padding: 0 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  color: #fff;
+  background-color: #0000ff;
+}
+
+header h1 {
+  font-family: "JetBrains Mono", monospace;
+}
+
+header a {
+  color: #fff;
+}
+
+/* MAIN */
 .container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  height: 80vh;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  column-gap: 30px;
+  row-gap: 30px;
 }
 
-.container .content {
-  width: 520px;
-  text-align: center;
+.no-archive {
+  grid-template-areas:
+    "search plist plist plist"
+    "s-result plist plist plist"
+    "s-result player player player";
 }
-.container .content h1 {
+
+.w-archive {
+  grid-template-areas:
+    "search plist plist archive"
+    "s-result plist plist archive"
+    "s-result player player player";
+}
+
+.grid__area {
+  padding: 2%;
+  display: flex;
+}
+
+.search__input {
+  align-items: center;
+  justify-content: space-evenly;
+  grid-area: search;
+}
+
+.search__input input {
+  padding: 2%;
+  color: #001e32;
+  border: none;
+  border-radius: 2px;
+  border-bottom: 2px solid #001e32;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  background-color: #e8e8e850;
+}
+
+.search__input button {
+  padding: 1% 3%;
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 3px;
+  border: 2px solid #0000ff;
+  background-color: #0000ff;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+}
+
+.search__input button:hover {
+  font-weight: 500;
   color: #0000ff;
+  background-color: transparent;
 }
+
+.search__results {
+  grid-area: s-result;
+  box-shadow: -1px 1px 3px -1px #48484850 inset;
+}
+
+.playlist {
+  grid-area: plist;
+  box-shadow: 1px -1px 3px -1px #48484850 inset;
+}
+
+.archive {
+  grid-area: archive;
+  box-shadow: 1px -1px 3px -1px #48484850 inset;
+}
+
+.audio__box {
+  grid-area: player;
+  box-shadow: 1px 1px 3px -1px #48484850 inset;
+}
+
+/* CONTROL */
+.clear {
+  display: none;
+}
+
 .container .content .input-box {
   margin-top: 10px;
 }
@@ -31,12 +138,10 @@
   background-color: #0000ff;
   color: #fff;
   border: none;
-
 }
 .container .content .input-box button:hover {
   background-color: #001e32;
-  transition: .5 all;
-
+  transition: 0.5 all;
 }
 .container .content .audio-box {
   margin-top: 20px;
