@@ -15,8 +15,10 @@ class Playlist {
   // event handler
   handleEvent(e) {
     const btn = e.target.id || e.target.closest("button").id;
-    let artist = e.target.dataset.artist;
-    let id = e.target.dataset.music;
+    console.log(btn);
+    let artist =
+      e.target.dataset.artist || e.target.closest("button").dataset.artist;
+    let id = e.target.dataset.music || e.target.closest("button").dataset.music;
 
     switch (btn) {
       case "filter-btn":
@@ -123,7 +125,6 @@ class Playlist {
       : (this.showArchive = true);
 
     if (this.showArchive) {
-      console.log("hi");
       const archive = document.querySelector(".archive");
       const archiveList = document.getElementById("archiveList");
 
