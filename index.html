@@ -21,21 +21,44 @@
         <input type="text" id="inputMusic" placeholder="Search music" />
         <button id="searchButton">Search</button>
       </section>
-      <section class="grid__area search__results"></section>
+      <section class="grid__area search__results">
+        <ul id="searchResults"></ul>
+      </section>
       <section class="grid__area playlist">
-        <h2 id="musicTitle">
-          Music <span id="sort-name"></span>| Artist
-          <span id="sort-artists"></span>
-        </h2>
+        <div class="playlist__info">
+          <h2 id="musicTitle">
+            Music&nbsp;
+            <span><i id="sort-name" class="fa-solid fa-sort"></i></span>
+            &nbsp;|&nbsp; Artist&nbsp;
+            <span><i id="sort-artists" class="fa-solid fa-sort"></i></span>
+          </h2>
+          <p>Duration: &nbsp;<span id="duration"></span></p>
+        </div>
         <ul id="musicList"></ul>
       </section>
       <section class="grid__area archive clear">
-        <h2>Removed</h2>
+        <h2>Archive</h2>
+        <ul id="archiveList"></ul>
       </section>
       <section class="grid__area audio__box">
-        <div id="player"></div>
+        <div class="audio__box--player">
+          <h2>Now PLaying: &nbsp;<span id="now-playing"></span></h2>
+          <audio
+            id="player"
+            controls="controls"
+            preload="auto"
+            autoplay="autoplay"
+            src="#"
+          >
+            Your browser does not support the audio tag.
+          </audio>
+        </div>
       </section>
     </main>
     <script type="module" src="./src/script.js"></script>
+    <script
+      src="https://kit.fontawesome.com/8fa2904e7b.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

@@ -8,21 +8,13 @@ const kenzieMusic = class {
     await fetch(`https://simple-spotify-api.herokuapp.com?search=${musicName}`)
       .then((res) => res.json())
       .then((res) => {
-        console.log(res.data);
-        const music = res.data[0];
-        if (!music) {
-          alert("Música não encontrada!");
-          this.searchResults = {};
-          return console.log("Música não encontrada!");
-        } else {
-          this.searchResults = music;
-        }
         const results = res.data;
-        if (!results) {
+        if (results.length === 0) {
           alert("Nenhum resultado encontrado");
           this.searchResults = {};
         } else {
           this.searchResults = results;
+          return this.searchResults;
         }
       });
   }
