@@ -234,4 +234,4 @@ class Playlist {
 }
 
 ////Export
-export { Playlist };
+export default Playlist;

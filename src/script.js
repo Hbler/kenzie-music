@@ -1,6 +1,6 @@
 //// Imports
 import kenzieMusic from "./utils/kenzieMusic.js";
-import { Playlist } from "./models/Playlist.js";
+import Playlist from "./models/Playlist.js";
 import { Music } from "./models/Music.js";
 
 /* Para conseguir buscar uma musica utilize esse método abaixo */
