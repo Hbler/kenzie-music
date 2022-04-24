@@ -9,15 +9,15 @@ const searchResults = document.getElementById("searchResults");
 const sortName = document.getElementById("sort-name");
 const sortArtist = document.getElementById("sort-artists");
 const kenziePlaylist = new Playlist("Kenzie", "Hbler");
-const musicTitle = document.getElementById("now-playing");
-const musicPlayer = document.getElementById("player");
+const playerBox = document.querySelector(".audio__box--player");
+// const musicTitle = document.getElementById("now-playing");
+// const musicPlayer = document.getElementById("player");
 
 //// Listeners
 searchButton.addEventListener("click", async () => {
   const input = document.getElementById("inputMusic");
   await kenzieMusic.search(input.value);
   input.value = "";
-  // console.log(kenzieMusic.searchResult);
   showResults();
 });
 
@@ -69,9 +69,28 @@ function callPlaylist() {
 function playMusic() {
   const id = this.id;
   const music = kenziePlaylist.musics.find((obj) => obj.id === id);
+  const title = `${music.name} - ${music.artists[0].name}`;
 
-  musicTitle.innerText = `${music.name} - ${music.artists[0].name}`;
-  musicPlayer.src = music.url;
+  createPlayer(music.url, title);
+}
+
+function createPlayer(src, title) {
+  const musicTitle = document.createElement("h2");
+  const musicPlayer = document.createElement("audio");
+  const source = document.createElement("source");
+
+  musicTitle.innerText = "Now Playing " + title;
+
+  musicPlayer.id = "player";
+  musicPlayer.setAttribute("controls", "controls");
+  musicPlayer.setAttribute("preload", "auto");
+  musicPlayer.setAttribute("autoplay", "autoplay");
+
+  source.src = src;
+  musicPlayer.appendChild(source);
+
+  playerBox.innerHTML = "";
+  playerBox.append(musicTitle, musicPlayer);
 }
 
 //// Export
